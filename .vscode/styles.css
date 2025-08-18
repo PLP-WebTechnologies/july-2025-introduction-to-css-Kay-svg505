@@ -1,0 +1,224 @@
+/* =====================
+   Base / Reset
+   ===================== */
+* {
+  box-sizing: border-box; /* Include padding & border in element width/height */
+}
+
+:root {
+  --bg: #0f172a;       /* slate-900 */
+  --panel: #111827;    /* gray-900 */
+  --muted: #94a3b8;    /* slate-400 */
+  --text: #e5e7eb;     /* gray-200 */
+  --brand: #60a5fa;    /* blue-400 */
+  --brand-strong: #3b82f6; /* blue-500 */
+  --accent: #22c55e;   /* green-500 */
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  line-height: 1.6;
+  color: var(--text);
+  background: radial-gradient(1200px 800px at 10% 0%, #0b1227 0%, var(--bg) 40%, #0b1227 100%);
+}
+
+/* Containers */
+.container {
+  width: min(1100px, 92%);
+  margin-inline: auto; /* centers horizontally */
+}
+
+.section {
+  margin-block: 3rem; /* vertical margin */
+}
+
+/* =====================
+   Header / Nav
+   ===================== */
+.site-header {
+  background: rgba(17, 24, 39, 0.8);
+  backdrop-filter: saturate(1.2) blur(6px);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+  position: sticky;
+  top: 0;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 0;
+}
+
+.logo {
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  padding: 0.4rem 0.6rem;
+  border-radius: 0.6rem;
+}
+
+.nav-links a:hover {
+  color: var(--text);
+  background: rgba(148, 163, 184, 0.12);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* =====================
+   Typography
+   ===================== */
+.content h1,
+.content h2,
+.content h3 {
+  line-height: 1.25;
+  margin: 0.2rem 0 0.5rem 0; /* top, right, bottom, left */
+}
+
+.content h1 { font-size: clamp(1.8rem, 2.4vw + 1rem, 2.6rem); }
+.content h2 { font-size: clamp(1.3rem, 1.6vw + 0.8rem, 1.8rem); }
+.content h3 { font-size: 1.1rem; }
+
+.content p {
+  color: var(--muted);
+  margin: 0 0 1rem 0; /* bottom margin separates paragraphs */
+}
+
+/* =====================
+   Buttons
+   ===================== */
+.btn {
+  display: inline-block;
+  padding: 0.6rem 1rem; /* PADDING enlarges the clickable area */
+  border: 2px solid var(--brand);
+  background: var(--brand);
+  color: hsl(240, 4%, 5%);
+  border-radius: 0.8rem; /* soften corners */
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.12s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+
+.btn.btn-ghost {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--brand);
+}
+
+
+.btn.btn-ghost:hover {
+  background: rgba(96, 165, 250, 0.12);
+}
+
+/* =====================
+   Box Model Playground
+   ===================== */
+.boxes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem; /* GAP is spacing between grid cells (outside the items) */
+}
+
+.box {
+  background: hsl(120, 2%, 10%); /* visible content area */
+  border: 2px solid #334155; /* BORDER sits between padding and margin */
+  outline: 2px dashed rgba(148, 163, 184, 0.35); /* shows the element’s outer edge */
+  border-radius: 1rem;
+  color: var(--text);
+}
+
+/* Box variations illustrating margin/padding/border differences */
+.b1 {
+  padding: 0.5rem;              /* small PADDING inside the border */
+  margin: 0.5rem;               /* small MARGIN outside the border */
+}
+
+.b2 {
+  padding: 1.5rem;              /* larger padding makes the box look roomier */
+  margin: 1rem;                 /* separates this box more from neighbors */
+  border-width: 6px;            /* thicker border emphasizes the boundary */
+  background: #0d132a;
+}
+
+.b3 {
+  /* Asymmetric values: top right bottom left */
+  padding: 0.25rem 1.25rem 1.5rem 0.75rem;
+  margin: 1.25rem 0.25rem 0.5rem 1.75rem;
+  border-style: dashed;
+  border-color: hsl(310, 93%, 52%);
+}
+
+.box h3 { margin: 0 0 0.4rem 0; }
+.box p  { margin: 0; color: var(--muted); }
+
+/* Helpful visual note: you can temporarily add background colors to parent containers
+   to see how margin collapse works between block elements. */
+
+/* =====================
+   Cards & Layout
+   ===================== */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  border-radius: 1rem;
+  padding: 1rem;            /* inner spacing */
+  box-shadow: 0 6px 16px rgba(2, 6, 23, 0.4);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.card h3 { margin: 0; }
+.card p  { margin: 0; }
+
+.card .btn { align-self: start; }
+
+/* =====================
+   Footer
+   ===================== */
+.site-footer {
+  border-top: 1px solid rgba(148, 163, 184, 0.15);
+  padding: 2rem 0;
+  color: var(--muted);
+}
+
+/* =====================
+   Responsive tweaks
+   ===================== */
+@media (max-width: 900px) {
+  .card-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 560px) {
+  .nav { flex-direction: column; gap: 0.5rem; align-items: flex-start; }
+  .card-grid { grid-template-columns: 1fr; }
+}
